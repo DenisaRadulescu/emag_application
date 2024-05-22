@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Emag Products</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 80%;
+            margin: auto;
+            background-color: green;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: center;
+            background-color: red;
+        }
+        th {
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;">Available Products</h1>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Store</th>
+        </tr>
+        {% for row in data %}
+        <tr>
+            <td>{{ row.name }}</td>
+            <td>{{ row.price }}</td>
+            <td>{{ row.store }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

@@ -1,16 +1,42 @@
-# This is a sample Python script.
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+from flask import Flask, render_template, request, url_for, redirect
+
+import emag_db
+
+app = Flask(__name__)
+
+config = emag_db.read_config()
+user_id, username, password = emag_db.read_admins(config)
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+users = {
+    username: password
+}
+
+@app.route("/")
+def first_function():
+    print(" S-a rulat cand apasam pe link")
+    return render_template("login.html")
 
 
-# Press the green button in the gutter to run the script.
+@app.route("/test")
+def second_function():
+    print(" S-a rulat cand apasam pe link")
+    return render_template("test.html")
+
+
+@app.route("/login", methods=["POST"])
+def web_login():
+    user = request.form['username']
+    passwrd = request.form['password']
+
+    if user in users.keys():
+        if passwrd == users[user]:
+            data = emag_db.read_products(config)
+            return render_template("home.html", data=data)
+
+    return render_template("login.html")
+
+
 if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    app.run()
