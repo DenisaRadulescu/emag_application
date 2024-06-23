@@ -37,20 +37,34 @@ def web_login():
     return render_template("login.html")
 
 
+# @app.route("/add_products", methods=['POST', 'PUT'])
+# def add_products():
+#     try:
+#         product_name = request.form['product_name']
+#         store = request.form['store']
+#         price = request.form['price']
+#
+#         query = (f"INSERT into emag.products(name, store, price) "
+#                  f"values ('{product_name}', '{store}, '{price}')")
+#         emag_db.execute_query(sql_query=query, config=config)
+#         data = emag_db.execute_query.read_products(config=config)
+#         return render_template('home.html', data=data)
+#     except Exception as e:
+#         return {f"Error in in adding the product, {e}"}
+#
+
 @app.route("/add_products", methods=['POST', 'PUT'])
 def add_products():
     try:
         product_name = request.form['product_name']
         store = request.form['store']
-        price = request.form['price']
+        price = float(request.form['price'])
 
-        query = (f"INSERT into emag.products(name, store, price) "
-                 f"values ('{product_name}', '{store}, '{price}')")
-        emag_db.execute_query(sql_query=query, config=config)
-        data = emag_db.execute_query.read_products(config=config)
+        new_product = emag_db.add_product(config, product_name, store, price)
+        data = emag_db.read_products(config)
         return render_template('home.html', data=data)
     except Exception as e:
-        return {f"Error in in adding the product, {e}"}
+        return f"Error in adding the product: {e}"
 
 
 if __name__ == '__main__':

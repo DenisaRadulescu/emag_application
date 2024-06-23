@@ -23,3 +23,17 @@ table {
             top: 50%;
             z-index: -9999;
 }
+
+button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #FFCB60;
+}

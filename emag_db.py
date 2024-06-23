@@ -33,7 +33,19 @@ def read_products(config: dict, table: str= "emag.products"):
             return products_list
 
 
+def add_product(config: dict, name: str, store: str, price: float, table: str = "emag.products"):
+    with ps.connect(**config) as conn:
+        with conn.cursor() as cursor:
+            sql_query = f"INSERT INTO {table} (name, store, price) VALUES (%s, %s, %s) RETURNING *"
+            cursor.execute(sql_query, (name, store, price))
+            new_product = cursor.fetchone()
+            conn.commit()
+            columns = [desc[0] for desc in cursor.description]
+            return dict(zip(columns, new_product))
+
+
 if __name__ == '__main__':
     config = read_config()
     admins = read_admins(config)
     products = read_products(config)
+    new_product = add_product(config, name="cutit", store="flanco", price= 20)
