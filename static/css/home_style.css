@@ -1,0 +1,25 @@
+table {
+            border-collapse: collapse;
+            width: 80%;
+            margin: auto;
+            background-color: #ADD8E6;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: center;
+            background-color: red;
+        }
+        th {
+            background-color: #ADD8E6;
+        }
+
+        #logo_img_id {
+            .center {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 50%;
+            top: 50%;
+            z-index: -9999;
+}
