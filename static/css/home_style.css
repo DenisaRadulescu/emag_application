@@ -1,28 +1,47 @@
 table {
-            border-collapse: collapse;
-            width: 80%;
-            margin: auto;
-            background-color: #ADD8E6;
-        }
-        th, td {
-            border: 1px solid black;
-            padding: 8px;
-            text-align: center;
-            background-color: red;
-        }
-        th {
-            background-color: #ADD8E6;
-        }
-
-        #logo_img_id {
-            .center {
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-            width: 50%;
-            top: 50%;
-            z-index: -9999;
+    border-collapse: collapse;
+    width: 80%;
+    margin: auto;
+    background-color: #ADD8E6;
 }
+
+
+th, td {
+    border: 1px solid black;
+    padding: 12px;
+    text-align: center;
+    background-color: #c5d0d1;
+    letter-spacing: 1px;
+    font-family: Arial, sans-serif;
+}
+
+
+th {
+    background-color: #ADD8E6;
+    border-bottom: 2px solid black;
+    font-weight: bold;
+}
+
+
+tr {
+    border-bottom: 1px solid #ddd;
+}
+
+
+tr:hover {
+    background-color: #D6EEEE;
+}
+
+
+#logo_img_id {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    top: 50%;
+    z-index: -9999;
+}
+
 
 button {
     background-color: #007bff;
@@ -32,9 +51,21 @@ button {
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
+    font-family: Arial, sans-serif;
 }
+
 
 button:hover {
     background-color: #FFCB60;
     color: #000000;
+}
+
+
+body {
+    background-image: linear-gradient(rgba(0, 0, 255, 0.5), rgba(255, 255, 0, 0.5)),
+                      url("https://tazzcdn.akamaized.net/uploads/cover/emag_cover.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: center;
 }
