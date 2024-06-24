@@ -30,3 +30,11 @@ function display_delete_product_form() {
         document.getElementById("delete_product").style.display = 'block'
     }
 }
+
+function display_update_price_form() {
+    let update_price_button = document.getElementById("button4")
+    update_price_button.style.display = 'none'
+    if (update_price_button.style.display === 'none') {
+        document.getElementById("update_price").style.display = 'block'
+    }
+}

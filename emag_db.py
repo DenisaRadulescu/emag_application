@@ -53,6 +53,15 @@ def delete_product(config: dict, name: str, table: str = "emag.products"):
             return cursor.rowcount
 
 
+def update_product_price(config: dict, name: str, new_price: float, table: str = "emag.products"):
+    with ps.connect(**config) as conn:
+        with conn.cursor() as cursor:
+            sql_query = f"UPDATE {table} SET price = %s WHERE name = %s"
+            cursor.execute(sql_query, (new_price, name))
+            conn.commit()
+            return cursor.rowcount
+
+
 if __name__ == '__main__':
     config = read_config()
     admins = read_admins(config)

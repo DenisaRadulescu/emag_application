@@ -77,6 +77,20 @@ def delete_product():
     except Exception as e:
         return f"Error in deleting the product: {e}"
 
+@app.route("/update_price", methods=['POST'])
+def update_price():
+    try:
+        product_name = request.form['product_name']
+        new_price = float(request.form['new_price'])
+        rows_affected = emag_db.update_product_price(config, product_name, new_price)
+        if rows_affected:
+            data = emag_db.read_products(config)
+            return render_template('home.html', data=data)
+        else:
+            return "Product not found"
+    except Exception as e:
+        return f"Error in updating the product price: {e}"
+
 
 if __name__ == '__main__':
     app.run()

@@ -46,6 +46,8 @@
 
 
     <button onclick="display_delete_product_form()" id="button3" style="display: block;">Delete Product</button>
+    <br>
+    <br>
     <form id="delete_product" action="/delete_product" style="display: none" method="post">
     <label for="delete_product_name">Product Name:</label>
     <input type="text" id="delete_product_name" name="product_name" required><br>
@@ -53,6 +55,16 @@
 </form>
 
     <br>
+
+    <button onclick="display_update_price_form()" id="button4" style="display: block;">Update Price</button>
+    <br>
+    <form id="update_price" action="/update_price" style="display: none" method="post">
+    <label for="update_product_name">Product Name:</label>
+    <input type="text" id="update_product_name" name="product_name" required><br>
+    <label for="new_price">New Price:</label>
+    <input type="number" id="new_price" name="new_price" step="0.01" required><br>
+    <button type="submit" >Update Price</button>
+</form>
 
     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Logo_eMAG.svg/2560px-Logo_eMAG.svg.png" alt="Emag Logo" width="1300" height="350" id="logo_img">
 
