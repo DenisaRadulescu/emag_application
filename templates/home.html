@@ -2,26 +2,16 @@
 <html>
 <head>
     <title>Emag Products</title>
-    <style>
-        table {
-            border-collapse: collapse;
-            width: 80%;
-            margin: auto;
-            background-color: green;
-        }
-        th, td {
-            border: 1px solid black;
-            padding: 8px;
-            text-align: center;
-            background-color: red;
-        }
-        th {
-            background-color: green;
-        }
-    </style>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home_style.css') }}">
+    <script src="{{url_for('static', filename='main.js')}}"></script>
+
+
 </head>
 <body>
-    <h1 style="text-align: center;">Available Products</h1>
+    <h1 style="text-align: center; color: black;" onclick="firstFunction()" id="titleId">Available Products</h1>
+
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Logo_eMAG.svg/2560px-Logo_eMAG.svg.png" alt="Emag Logo" width="1300" height="350" id="logo_img">
+
     <table>
         <tr>
             <th>Name</th>
@@ -36,5 +26,60 @@
         </tr>
         {% endfor %}
     </table>
+
+
+    <button onclick="display_add_product_form()" id = "button2" style="display: block;"> ADD Product </button>
+    <br>
+    <br>
+    <br>
+
+
+    <form id="add_product" action="/add_products" style="display: none" method="post">
+            <label for="product_name">Product Name:</label>
+            <input type="text" id="product_name" name="product_name" required><br>
+
+            <label for="store">Store:</label>
+            <input type="text" id="store" name="store" required><br>
+
+            <label for="price">Price:</label>
+            <input type="text" id="price" name="price" required><br>
+
+            <button type="submit" id="send">Send</button>
+        </form>
+
+
+    <button onclick="display_delete_product_form()" id="button3" style="display: block;">Delete Product</button>
+    <br>
+    <br>
+    <form id="delete_product" action="/delete_product" style="display: none" method="post">
+    <label for="delete_product_name">Product Name:</label>
+    <input type="text" id="delete_product_name" name="product_name" required><br>
+    <button type="submit">Delete</button>
+</form>
+
+    <br>
+
+    <button onclick="display_update_price_form()" id="button4" style="display: block;">Update Price</button>
+    <br>
+    <form id="update_price" action="/update_price" style="display: none" method="post">
+    <label for="update_product_name">Product Name:</label>
+    <input type="text" id="update_product_name" name="product_name" required><br>
+    <label for="new_price">New Price:</label>
+    <input type="number" id="new_price" name="new_price" step="0.01" required><br>
+    <button type="submit" >Update Price</button>
+</form>
+
+    <br><br>
+
+    <button onclick="get_most_expensive_product()" id="button5" style="display: block;">Show Most Expensive Product</button>
+    <br><br>
+    <div id="most_expensive_product" style="display: none;">
+        <h2>Most Expensive Product: <span id="prod_name"></span></h2>
+    </div>
+
+
+
+
 </body>
+
 </html>
