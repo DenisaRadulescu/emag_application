@@ -20,3 +20,13 @@ function display_add_product_form() {
         document.getElementById("add_product").style.display = 'block'
     }
 }
+
+
+
+function display_delete_product_form() {
+    let delete_product_button = document.getElementById("button3")
+    delete_product_button.style.display = 'none'
+    if (delete_product_button.style.display === 'none') {
+        document.getElementById("delete_product").style.display = 'block'
+    }
+}

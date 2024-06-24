@@ -44,6 +44,15 @@ def add_product(config: dict, name: str, store: str, price: float, table: str = 
             return dict(zip(columns, new_product))
 
 
+def delete_product(config: dict, name: str, table: str = "emag.products"):
+    with ps.connect(**config) as conn:
+        with conn.cursor() as cursor:
+            sql_query = f"DELETE FROM {table} WHERE name = %s"
+            cursor.execute(sql_query, (name,))
+            conn.commit()
+            return cursor.rowcount
+
+
 if __name__ == '__main__':
     config = read_config()
     admins = read_admins(config)

@@ -53,7 +53,7 @@ def web_login():
 #         return {f"Error in in adding the product, {e}"}
 #
 
-@app.route("/add_products", methods=['POST', 'PUT'])
+@app.route("/add_products", methods=['POST'])
 def add_products():
     try:
         product_name = request.form['product_name']
@@ -65,6 +65,17 @@ def add_products():
         return render_template('home.html', data=data)
     except Exception as e:
         return f"Error in adding the product: {e}"
+
+
+@app.route("/delete_product", methods=['POST'])
+def delete_product():
+    try:
+        product_name = request.form['product_name']
+        emag_db.delete_product(config, product_name)
+        data = emag_db.read_products(config)
+        return render_template('home.html', data=data)
+    except Exception as e:
+        return f"Error in deleting the product: {e}"
 
 
 if __name__ == '__main__':

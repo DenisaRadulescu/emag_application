@@ -30,6 +30,7 @@
     <br>
     <br>
 
+
     <form id="add_product" action="/add_products" style="display: none" method="post">
             <label for="product_name">Product Name:</label>
             <input type="text" id="product_name" name="product_name" required><br>
@@ -42,6 +43,16 @@
 
             <button type="submit" id="send">Send</button>
         </form>
+
+
+    <button onclick="display_delete_product_form()" id="button3" style="display: block;">Delete Product</button>
+    <form id="delete_product" action="/delete_product" style="display: none" method="post">
+    <label for="delete_product_name">Product Name:</label>
+    <input type="text" id="delete_product_name" name="product_name" required><br>
+    <button type="submit">Delete</button>
+</form>
+
+    <br>
 
     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Logo_eMAG.svg/2560px-Logo_eMAG.svg.png" alt="Emag Logo" width="1300" height="350" id="logo_img">
 
