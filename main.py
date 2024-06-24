@@ -92,5 +92,17 @@ def update_price():
         return f"Error in updating the product price: {e}"
 
 
+@app.route("/most_expensive_product", methods=['GET'])
+def most_expensive_product():
+    try:
+        product_name = emag_db.get_most_expensive_product(config)
+        if product_name:
+            return product_name
+        else:
+            return "No products available"
+    except Exception as e:
+        return f"Error in getting the most expensive product: {e}"
+
+
 if __name__ == '__main__':
     app.run()

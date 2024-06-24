@@ -62,6 +62,17 @@ def update_product_price(config: dict, name: str, new_price: float, table: str =
             return cursor.rowcount
 
 
+def get_most_expensive_product(config: dict, table: str = "emag.products"):
+    with ps.connect(**config) as conn:
+        with conn.cursor() as cursor:
+            sql_query = f"SELECT name FROM {table} ORDER BY price DESC LIMIT 1"
+            cursor.execute(sql_query)
+            most_expensive_product = cursor.fetchone()
+            if most_expensive_product:
+                return most_expensive_product[0]
+            else:
+                return None
+
 if __name__ == '__main__':
     config = read_config()
     admins = read_admins(config)

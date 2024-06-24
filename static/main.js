@@ -38,3 +38,23 @@ function display_update_price_form() {
         document.getElementById("update_price").style.display = 'block'
     }
 }
+
+function display_most_expensive_product_form() {
+    let most_expensive_product_button = document.getElementById("button5");
+    most_expensive_product_button.style.display = 'none';
+    if (most_expensive_product_button.style.display === 'none') {
+        fetch_most_expensive_product();
+    }
+}
+
+function get_most_expensive_product() {
+    fetch('/most_expensive_product')
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById("prod_name").innerText = data;
+        document.getElementById("most_expensive_product").style.display = 'block';
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+}

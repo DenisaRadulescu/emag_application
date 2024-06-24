@@ -9,6 +9,9 @@
 </head>
 <body>
     <h1 style="text-align: center; color: black;" onclick="firstFunction()" id="titleId">Available Products</h1>
+
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Logo_eMAG.svg/2560px-Logo_eMAG.svg.png" alt="Emag Logo" width="1300" height="350" id="logo_img">
+
     <table>
         <tr>
             <th>Name</th>
@@ -66,7 +69,14 @@
     <button type="submit" >Update Price</button>
 </form>
 
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Logo_eMAG.svg/2560px-Logo_eMAG.svg.png" alt="Emag Logo" width="1300" height="350" id="logo_img">
+    <br><br>
+
+    <button onclick="get_most_expensive_product()" id="button5" style="display: block;">Show Most Expensive Product</button>
+    <br><br>
+    <div id="most_expensive_product" style="display: none;">
+        <h2>Most Expensive Product: <span id="prod_name"></span></h2>
+    </div>
+
 
 
 
